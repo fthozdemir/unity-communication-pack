@@ -1,14 +1,13 @@
 using TuioNet.Common;
 using TuioNet.Tuio11;
 using UnityEngine;
+using System.Collections.Generic;
 
-namespace TuioUnity.Tuio11
+namespace TuioUnity.Tuio11.Tag
 {
-    public class Tuio11Visualizer : MonoBehaviour, ITuio11Listener
+    public class TagController : MonoBehaviour, ITuio11Listener
     {
-        [SerializeField] private Tuio11CursorBehaviour _tuio11CursorPrefab;
-        [SerializeField] private Tuio11ObjectBehaviour _tuio11ObjectPrefab;
-
+        [SerializeField] List<Tuio11ObjectBehaviour> tagPrefabList;
 
         void Start()
         {
@@ -17,8 +16,16 @@ namespace TuioUnity.Tuio11
 
         public void AddTuioObject(Tuio11Object tuio11Object)
         {
-            var tuio11ObjectBehaviour = Instantiate(_tuio11ObjectPrefab, transform);
-            tuio11ObjectBehaviour.Initialize(tuio11Object);
+            Debug.Log(tuio11Object.SymbolId + "added");
+            foreach (Tuio11ObjectBehaviour tagElement in tagPrefabList)
+            {
+                if (tuio11Object.SymbolId == tagElement.Id)
+                {
+                    var tagBehaviour = Instantiate(tagElement, transform);
+                    tagBehaviour.Initialize(tuio11Object);
+                }
+            }
+
         }
 
         public void UpdateTuioObject(Tuio11Object tuio11Object)
@@ -31,8 +38,6 @@ namespace TuioUnity.Tuio11
 
         public void AddTuioCursor(Tuio11Cursor tuio11Cursor)
         {
-            var tuio11CursorBehaviour = Instantiate(_tuio11CursorPrefab, transform);
-            tuio11CursorBehaviour.Initialize(tuio11Cursor);
         }
 
         public void UpdateTuioCursor(Tuio11Cursor tuio11Cursor)

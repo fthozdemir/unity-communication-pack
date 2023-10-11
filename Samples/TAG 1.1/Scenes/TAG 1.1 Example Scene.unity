@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 77172105}
   - component: {fileID: 77172104}
   m_Layer: 0
-  m_Name: TUIO 1.1 Manager
+  m_Name: TAG Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 584408651}
-  _tuioManagerSettings: {fileID: 11400000, guid: 913980771c5ea4923b599f2fa9c2e004, type: 2}
+  _tuioManagerSettings: {fileID: 11400000, guid: 52f0cbe5636c04b35a1419d5e7730d15, type: 2}
 --- !u!4 &77172105
 Transform:
   m_ObjectHideFlags: 0
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 1127529636}
   - component: {fileID: 1127529640}
   m_Layer: 5
-  m_Name: TUIO 1.1 Visualizer
+  m_Name: TAG Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,11 +372,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1127529634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53770f1c045203f4eb929d3339dabd92, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b12384a4d3084328ac62d9d9eb26958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tuio11CursorPrefab: {fileID: 1098858469007961909, guid: a496f1f9797b84c3d819f6f17583a69a, type: 3}
-  _tuio11ObjectPrefab: {fileID: 4893285864280235794, guid: 409e068c6595e4878bbc93f7d0266622, type: 3}
+  tagPrefabList:
+  - {fileID: 1993948079265703698, guid: 19141335dc710457fb7a5d9d3bfcfa09, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

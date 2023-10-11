@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1964975898, guid: 99ffcf127ad76a542b102745723b27a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9bfbda7f0b4a847e98c9200bde73a88c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -84,10 +84,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4927711850202578319}
-  - component: {fileID: 4893285864280235794}
-  - component: {fileID: 3438827277398738717}
+  - component: {fileID: 1993948079265703698}
+  - component: {fileID: 6756115127286163469}
   m_Layer: 5
-  m_Name: WaterTagObject
+  m_Name: SampleTag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4893285864280235794
+--- !u!114 &1993948079265703698
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 1
---- !u!114 &3438827277398738717
+--- !u!114 &6756115127286163469
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,9 +135,66 @@ MonoBehaviour:
   m_GameObject: {fileID: 8934298683102258810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361229c26ab19475287dbd8554bb91c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 91ccb741d859c4ce5929c8916905c1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tuioBehaviour: {fileID: 4893285864280235794}
   _image: {fileID: 6627277195680865723}
-  _debugTextPrefab: {fileID: 5888388197146524415, guid: ace997f7315274ca79cc6f4bdf81a49b, type: 3}
+  _debugTextPrefab: {fileID: 5888388197146524415, guid: 206fc455e2b0e47738e054a383307ada, type: 3}
+  isDebugTextActive: 1
+  OnStartEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3272280422974396486, guid: c5ff4c3648ea7403a8d0d0a5ea8c6917, type: 3}
+        m_TargetAssemblyTypeName: ExampleTagBehaviors, Assembly-CSharp
+        m_MethodName: OnSampleTagStart
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6756115127286163469}
+          m_ObjectArgumentAssemblyTypeName: TuioUnity.Tuio11.Tag.Tag, InteractiveScape.Tuio
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  OnUpdateEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3272280422974396486, guid: c5ff4c3648ea7403a8d0d0a5ea8c6917, type: 3}
+        m_TargetAssemblyTypeName: ExampleTagBehaviors, Assembly-CSharp
+        m_MethodName: OnSampleTagUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6756115127286163469}
+          m_ObjectArgumentAssemblyTypeName: TuioUnity.Tuio11.Tag.Tag, InteractiveScape.Tuio
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3272280422974396486, guid: c5ff4c3648ea7403a8d0d0a5ea8c6917, type: 3}
+        m_TargetAssemblyTypeName: ExampleTagBehaviors, Assembly-CSharp
+        m_MethodName: DoSomeThing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnRemoveEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3272280422974396486, guid: c5ff4c3648ea7403a8d0d0a5ea8c6917, type: 3}
+        m_TargetAssemblyTypeName: ExampleTagBehaviors, Assembly-CSharp
+        m_MethodName: OnSampleTagDestroy
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6756115127286163469}
+          m_ObjectArgumentAssemblyTypeName: TuioUnity.Tuio11.Tag.Tag, InteractiveScape.Tuio
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

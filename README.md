@@ -1,42 +1,34 @@
-# TUIO Client for Unity
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-This package provides the functionality to use TUIO 1.1 or 2.0 in you Unity projects. It is based on [TuioNet](https://github.com/InteractiveScapeGmbH/TuioNet), a .Net implementation of the TUIO 1.1 and 2.0 specification by Martin Kaltenbrunner.
+# TUIO,~~Websocket~~, ~~SerialPort~~ Client for Unity
 
-## Overview
+TUIO part of this package provides the functionality to use TUIO 1.1 or 2.0 in you Unity projects. It is based on [TuioUnityClient](https://github.com/InteractiveScapeGmbH/TuioUnityClient), an opensource implementation based on [TuioNet](https://github.com/InteractiveScapeGmbH/TuioNet)
+
+
+### Installation instructions
+
+Import package from repo releases to your Unity project
+
+## TUIO Client
+
+### Overview 
 
 A TUIO Client package to enable the easy creation of apps and games that interface with TUIO capable hardware and software for tangible input.
 
-## Package contents
+### Package contents
 
 The Editor and Runtime folders contain key scripts for the Unity editor and runtime respectively. The Samples~ folder contains a simple reference implementation for TUIO 1.1 or TUIO 2.0 that visualizes the cursors and objects as coloured squares.
 
-## Installation instructions
+### Requirements
 
-Open the Package Manager window and click the plus icon followed by "Add package from git URL...". Enter https://github.com/InteractiveScapeGmbH/TuioUnityClient.git and click "Add".</br>
-Alternatively download the code from github, unzip it and choose the "Add package from disk.." option. Select the ```package.json``` file from the package directory.
+You will require a TUIO source connected to your device or as a source you can use this excelent simulator [TUIOSimulator](https://github.com/gregharding/TUIOSimulator) by Greg Harding.
 
-![Add Package](Documentation~/img/pm-add.png)
+Assume this package is built to run from Unity 2020.3 upwards. Only tested in Unity 2022.3.
 
-After the import process is finished the package should appear in the Package Manager and you can import the sample projects.
+**Important:** By default the windows firewall blocks network communication of the Unity Editor. In order to receive UDP messages from other devices in your local network you need to allow it in the windows firewall settings.
 
-![Imported Package](Documentation~/img/imported-package.png)
-
-## Requirements
-
-You will require a TUIO source connected to your device.
-
-This package is built to run from Unity 2020.3 upwards.
-
-**Important:** By default the windows firewall blocks network communication of the Unity Editor. In order to receive UDP messages from other devices in your local network you need to allow it in the windows firewall settings as shown below:
-
-![Firewall Settings](/Documentation~/img/firewall.png)
-
-## Dependencies
+### Dependencies
 - TextMesh Pro for displaying debugging information like id, position or angle.
 
-## Limitations
+### Limitations
 
 TUIO 1.1 support is currently limited to 2Dobj, 2Dcur and 2Dblb messages.</br>
 **Important:** 25Dobj, 25Dcur, 25Dblb, 3Dobj, 3Dcur, 3Dblb and custom messages are all ignored.
@@ -44,19 +36,18 @@ TUIO 1.1 support is currently limited to 2Dobj, 2Dcur and 2Dblb messages.</br>
 TUIO 2.0 support is currently limited to FRM, ALV, TOK, PTR, BND and SYM messages.</br> 
 **Important:** T3D, P3D, B3D, CHG, OCG, ICG, SKG, S3D, SVG, ARG, RAW, CTL, DAT, SIG, ALA, COA, LIA, LLA, LTA and custom messages are all ignored.
 
-This package has not been tested outside of Windows, however should be compatible across all platforms.
+This package has been tested M1 mac, Windows and Displax device, but should be compatible across all platforms included linux.
 
-## Workflows
+### Workflows
 
 - Create a TUIO 1.1 Manager or TUIO 2.0 Manager in your scene using GameObject > TUIO in the main Unity window or Right Click > TUIO in the Hierarchy.
 
-![Create Tuio Manager](Documentation~/img/add-manager.png)
+#### Create Tuio Manager
 - Create a TUIO Manager Settings object in your Assets folder using Right Click > TUIO in the Project window. Reference the created TUIO Manager Settings asset from the TUIO 1.1 Manager or TUIO 2.0 Manager in the Hierarchy.
-![Add Settings](Documentation~/img/add-settings.png)
 
-Set the desired TUIO Manager Settings (see Reference).
-
-![Manager Settings](Documentation~/img/settings.png)
+- Set the desired TUIO Manager Settings. 
+   - Exp for Displax : Select UDP and set Websocket Adress 127.0.0.1 .Udp port -> 3333. Websocket Port -> 3333
+  
 
 Create scripts that implement the Tuio11Listener or Tuio20Listener interface and subscribe them to the manager using ```Tuio11Manager.Instance.AddTuio11Listener(this)``` or ```Tuio20Manager.Instance.AddTuio20Listener(this)```. Use the
 appropriate callbacks to implement your own TUIO application. Within the sample projects examples are given with the ```Tuio11Visualizer.cs``` and ```Tuio20Visualizer.cs``` which spawn simple Cursor/Pointer or Objects/Tokens. 
@@ -67,8 +58,10 @@ GameObjects which should appear as Cursors/Pointers and Objects/Tokens need an a
 - ```Tuio20PointerBehaviour.cs```
 - ```Tuio20TokenBehaviour.cs```
 
+#### Tuio1.1 Tag Controller 
+- Create a TUIO Manager Settings object in your Assets folder using Right Click > TUIO in the Project window. Reference the created TUIO Manager Settings asset from the TUIO 1.1 Manager or TUIO 2.0 Manager in the Hierarchy.
 
-## Reference
+### Reference
 
 | **Field** | **Format** | **Description** |
 |--|--|--|
@@ -78,29 +71,6 @@ GameObjects which should appear as Cursors/Pointers and Objects/Tokens need an a
 | Websocket Port | 0 - 9999 | The remote port to connect to the websocket server |
 
 
-## Samples
-Samples can be imported via the Package Manager. Right now there are two basic sample scenes for TUIO 1.1 and TUIO 2.0
-![Sample Scene](Documentation~/img/sample-scene.png)
+### Samples ✨
+Sample scenes can be imported from the TuioUnityClient/Samples/TUIO x.x/Scenes. Right now there are two basic sample scenes for TUIO 1.1 and TUIO 2.0
 
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://www.interactive-scape.com/"><img src="https://avatars.githubusercontent.com/u/51314413?v=4?s=100" width="100px;" alt="Erich Querner"/><br /><sub><b>Erich Querner</b></sub></a><br /><a href="https://github.com/InteractiveScapeGmbH/TuioUnityClient/commits?author=eqbic" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/gilescoope"><img src="https://avatars.githubusercontent.com/u/5291605?v=4?s=100" width="100px;" alt="Giles Coope"/><br /><sub><b>Giles Coope</b></sub></a><br /><a href="https://github.com/InteractiveScapeGmbH/TuioUnityClient/commits?author=gilescoope" title="Code">💻</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
