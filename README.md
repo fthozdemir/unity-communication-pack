@@ -44,7 +44,7 @@ This package has been tested M1 mac, Windows and Displax device, but should be c
 
 - Create a TUIO 1.1 Manager or TUIO 2.0 Manager in your scene using GameObject > TUIO in the main Unity window or Right Click > TUIO in the Hierarchy.
 - Create ```TagController```. Simple add TagController script to any game object in scene. If you want to see UI for object do not forget to include ```Canvas```, ```Canvas Scaler``` and ```Graphic Raycaster``` to where the controller is.
-- Create a Tag(TUIO 1.1 Object) game object. [See the Create a Tag Section](#create-tag)
+- Create a Tag(TUIO 1.1 Object) game object. [See the Create a Tag Section](#create-a-tag)
 - Add your tag to the ```TagPrefabList``` in your ```Tag Controller```
 - Drag and drop to any ```OnStartEvents, OnUpdateEvents, OnRemoveEvents``` to you the tag from Unity Editor or simple you can delegate desired events to your Tag(s) accessing from the TagController.
   
