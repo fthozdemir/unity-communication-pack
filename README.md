@@ -1,4 +1,4 @@
-# TUIO,~~Websocket~~, ~~SerialPort~~ Client for Unity
+# TUIO, ~~Websocket~~, ~~SerialPort~~ Client for Unity
 
 TUIO part of this package provides the functionality to use TUIO 1.1 or 2.0 in you Unity projects. It is based on [TuioUnityClient](https://github.com/InteractiveScapeGmbH/TuioUnityClient), an opensource implementation based on [TuioNet](https://github.com/InteractiveScapeGmbH/TuioNet)
 
@@ -38,9 +38,16 @@ TUIO 2.0 support is currently limited to FRM, ALV, TOK, PTR, BND and SYM message
 
 This package has been tested M1 mac, Windows and Displax device, but should be compatible across all platforms included linux.
 
-### Workflows
+## Workflows
+
+### Working with Tags
 
 - Create a TUIO 1.1 Manager or TUIO 2.0 Manager in your scene using GameObject > TUIO in the main Unity window or Right Click > TUIO in the Hierarchy.
+- Create ```TagController```. Simple add TagController script to any game object in scene. If you want to see UI for object do not forget to include ```Canvas```, ```Canvas Scaler``` and ```Graphic Raycaster``` to where the controller is.
+- Create a Tag(TUIO 1.1 Object) game object. [See the Create a Tag Section](#create-tag)
+- Add your tag to the ```TagPrefabList``` in your ```Tag Controller```
+- Drag and drop to any ```OnStartEvents, OnUpdateEvents, OnRemoveEvents``` to you the tag from Unity Editor or simple you can delegate desired events to your Tag(s) accessing from the TagController.
+  
 
 #### Create Tuio Manager
 - Create a TUIO Manager Settings object in your Assets folder using Right Click > TUIO in the Project window. Reference the created TUIO Manager Settings asset from the TUIO 1.1 Manager or TUIO 2.0 Manager in the Hierarchy.
@@ -49,6 +56,15 @@ This package has been tested M1 mac, Windows and Displax device, but should be c
    - Exp for Displax : Select UDP and set Websocket Adress 127.0.0.1 .Udp port -> 3333. Websocket Port -> 3333
   
 
+#### Create a Tag
+- Create a game object with ```Tag.cs``` which is also ```Tuio11ObjectBehaviour.cs``` required.
+- Set the id of your tag from ```Tuio11ObjectBehaviour``` section. This is TUIO id of your tag. *You may see 0, 1, ... 6 in simulations, but in Displax it may be 202, 203, ... 303 etc.*
+- Set image source, and activeness from Tag Component as you desired.
+- Add *DebugText*.prefab if you wish to see position, Id, and angle in canvas. *Also do not forget to add include Canvas, Canvas Scaler and Graphic Raycaster to your Tag Controller.
+- You also may add any function from a script of a game object as an event in any count for start (when tag added ), update(when object changed position or angle) or remove(when object removed from table). 
+-  **It is strongly recommended that you look at the ```ExampleTagEvents.cs``` for examples**
+
+### Working with Tuio
 Create scripts that implement the Tuio11Listener or Tuio20Listener interface and subscribe them to the manager using ```Tuio11Manager.Instance.AddTuio11Listener(this)``` or ```Tuio20Manager.Instance.AddTuio20Listener(this)```. Use the
 appropriate callbacks to implement your own TUIO application. Within the sample projects examples are given with the ```Tuio11Visualizer.cs``` and ```Tuio20Visualizer.cs``` which spawn simple Cursor/Pointer or Objects/Tokens. 
 
@@ -57,9 +73,6 @@ GameObjects which should appear as Cursors/Pointers and Objects/Tokens need an a
 - ```Tuio11ObjectBehaviour.cs```
 - ```Tuio20PointerBehaviour.cs```
 - ```Tuio20TokenBehaviour.cs```
-
-#### Tuio1.1 Tag Controller 
-- Create a TUIO Manager Settings object in your Assets folder using Right Click > TUIO in the Project window. Reference the created TUIO Manager Settings asset from the TUIO 1.1 Manager or TUIO 2.0 Manager in the Hierarchy.
 
 ### Reference
 
@@ -72,5 +85,5 @@ GameObjects which should appear as Cursors/Pointers and Objects/Tokens need an a
 
 
 ### Samples ✨
-Sample scenes can be imported from the TuioUnityClient/Samples/TUIO x.x/Scenes. Right now there are two basic sample scenes for TUIO 1.1 and TUIO 2.0
+Sample scenes can be imported from the TuioUnityClient/Samples/ .Right now there are there basic sample scenes for TUIO 1.1, TUIO 2.0 and Tags
 

@@ -16,6 +16,7 @@ namespace TuioUnity.Tuio11.Tag
         [SerializeField] private Image _image;
         [SerializeField] private DebugText _debugTextPrefab;
         [SerializeField] private bool isDebugTextActive;
+        [SerializeField] private bool isImageActive;
 
         public UnityEvent<Tag> OnStartEvents;
         public UnityEvent<Tag> OnUpdateEvents;
@@ -24,12 +25,22 @@ namespace TuioUnity.Tuio11.Tag
         private DebugText _debugText;
         TuioObjectBehaviour _tuioBehaviour;
 
-        public virtual void Start()
+        public void Start()
         {
             _tuioBehaviour = GetComponent<TuioObjectBehaviour>();
             Random.InitState((int)_tuioBehaviour.Id);
             var color = Random.ColorHSV(0f, 1f, 0.7f, 0.8f, 1f, 1f);
-            _image.color = color;
+
+            if (isImageActive)
+            {
+                _image.gameObject.SetActive(true);
+                _image.color = color;
+            }
+            else
+            {
+                _image.gameObject.SetActive(false);
+            }
+
             if (isDebugTextActive)
             {
                 _debugText = Instantiate(_debugTextPrefab, transform.parent);
