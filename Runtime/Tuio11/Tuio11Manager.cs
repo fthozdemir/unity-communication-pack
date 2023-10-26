@@ -8,7 +8,7 @@ namespace TuioUnity.Tuio11
     {
         [SerializeField] private Camera _camera;
         [SerializeField] private TuioManagerSettings _tuioManagerSettings;
-        
+
         private bool _isInitialized;
         public Tuio11Client TuioClient { get; private set; }
 
@@ -64,16 +64,18 @@ namespace TuioUnity.Tuio11
             }
         }
 
-        
+
         public Vector2 GetWorldPosition(Vector2 tuioPosition)
         {
             tuioPosition.y = (1 - tuioPosition.y);
+            tuioPosition.x = _tuioManagerSettings.isReversedX ? (1 - tuioPosition.x) : tuioPosition.x;
             return _camera.ViewportToWorldPoint(tuioPosition);
         }
-        
+
         public Vector2 GetScreenPosition(Vector2 tuioPosition)
         {
             tuioPosition.y = (1 - tuioPosition.y);
+            tuioPosition.x = _tuioManagerSettings.isReversedX ? (1 - tuioPosition.x) : tuioPosition.x;
             return _camera.ViewportToScreenPoint(tuioPosition);
         }
 
